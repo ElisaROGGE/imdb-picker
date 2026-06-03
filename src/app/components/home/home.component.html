@@ -1,0 +1,17 @@
+<main class="home">
+  <p class="home__eyebrow">What to watch</p>
+  <h1 class="home__title">What are we watching tonight?</h1>
+
+  <button class="home__btn" (click)="pick()" [disabled]="loading()">
+    {{ loading() ? 'Loading...' : 'Pick a movie' }}
+  </button>
+
+  @if (error()) {
+    <p class="home__error">{{ error() }}</p>
+  }
+
+  @if (movie()) {
+    <app-movie-card [movie]="movie()!" />
+    <p class="home__hint">Click on the card to reveal it</p>
+  }
+</main>

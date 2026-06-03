@@ -1,0 +1,28 @@
+<div class="card-scene" (click)="flip()">
+  <div class="card-inner" [class.is-flipped]="isFlipped()">
+
+    <div class="card-face card-back">
+      <div class="card-back__icon">🎬</div>
+      <p class="card-back__label">Clique pour révéler</p>
+    </div>
+
+    <div class="card-face card-front">
+      <img class="card-poster" [src]="movie().image" [alt]="movie().title" />
+      <div class="card-body">
+        <div class="card-genres">
+          @for (genre of movie().genre; track genre) {
+            <span class="genre-tag">{{ genre }}</span>
+          }
+        </div>
+        <p class="card-title">{{ movie().title }}</p>
+        <p class="card-meta">{{ movie().year }} · {{ movie().director.join(', ') }} - Top {{ movie().rank }}</p>
+        <div class="card-rating">
+          ★ {{ movie().rating }}
+          <span>/ 10 sur IMDB</span>
+        </div>
+        <p class="card-description">{{ movie().description }}</p>
+      </div>
+    </div>
+
+  </div>
+</div>
